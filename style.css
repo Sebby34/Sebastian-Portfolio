@@ -158,23 +158,47 @@ nav .right a:last-child{
     font-size: 35px;
 }
 
-.project_section .group{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* PROJECTS: Individual Project Styling */
+.project_section .project {
+    margin: 50px auto;          /* space between projects */
+    padding: 20px;              /* inner spacing */
+    max-width: 800px;           /* prevents content from stretching too wide */
+    border: 1px solid #d3d3d3; /* subtle border for separation */
+    border-radius: 10px;        /* rounded corners */
+    background-color: #ffffff;  /* white background for contrast */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* soft shadow */
+    text-align: left;           /* left-align text for readability */
 }
 
-.project_section .group .image{
-    text-align: center;
+.project_section .project h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--text-color);
 }
 
-.project_section .group .image img{
-    width: 400px;
-    height:300px;
-    border-radius: 2px;
-    display: block;
-    margin: 0 auto;
-    
+.project_section .project p {
+    margin-bottom: 10px;
+    line-height: 1.6;           /* improves readability */
+}
+
+.project_section .project ul {
+    margin: 10px 0 10px 20px;  /* left indent for bullets */
+}
+
+.project_section .project ul li {
+    margin-bottom: 5px;        /* space between bullet points */
+}
+
+.project_section .project a {
+    color: var(--link-color);
+    font-weight: 500;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+.project_section .project a:hover {
+    color: var(--text-color);
+    text-decoration: none;
 }
 
 /*Section 4: Contact*/
@@ -245,6 +269,20 @@ nav .right a:last-child{
 
     .hero_section .headshot img{
         width: 300px;
+    }
+
+    .project_section .project {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .project_section .project h3 {
+        font-size: 24px;
+    }
+
+    .project_section .project p,
+    .project_section .project ul {
+        font-size: 16px;
     }
 
     /*SECTION 4: CONTACT*/
