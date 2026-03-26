@@ -1,334 +1,389 @@
-:root{ /*This sets global variables*/
-    --text-color: #2e2e2e;
-    --link-color: #0066cc;
-    --background-color: #f7f9fb;
+/* ==========================
+   GLOBAL VARIABLES
+========================== */
+:root {
+    --text-color: #2C2C2C;        /* dark gray for primary text */
+    --accent-color: #1F618D;      /* deep navy for links and highlights */
+    --background-color: #FAFAFA;  /* soft off-white background */
+    --border-color: #E0E0E0;      /* subtle borders */
+    --card-background: #FFFFFF;   /* for skill cells and project cards */
+    --font-family: 'Roboto Flex', sans-serif;
 }
-*{ /*This affects all elements*/
+
+/* ==========================
+   RESET & BASE STYLES
+========================== */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
-body{
-    font-family: 'Roboto Flex', sans-serif;
+
+body {
+    font-family: var(--font-family);
     background-color: var(--background-color);
-}
-a{ /*links*/
-    color: var(--link-color);
-    text-decoration: none; /*This ,makes links not underlined*/
-}
-
-/*NAV BAR*/
-nav{
-    display: flex; /* makes all of the links under nav displayed horizontally */
-    justify-content: space-between; /* as expected puts space between left and right classes*/
-    align-items: center; /*keeps them aligned equally to center*/
-
-    padding: 0 50px; /*first value is space from y axis, second is space from x axis
-    So this creates 50px of space from the x axis for both left and right*/
-    height: 80px;
-}
-
-nav .left a{ /*We are targeting the left link*/
     color: var(--text-color);
-    font-size: 22px;
-    font-weight: 600; /*adjusts the boldness essentially of text*/
+    line-height: 1.6;
 }
 
-nav .right a{ /*We are targeting the right link*/
-    color: var(--text-color);
-    margin: 0 10px; /*Creates space between links but only on x axis not y*/
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-nav .right a:last-child{
-    color: var(--background-color);
-    background-color: var(--text-color);
-    /*For the above we are inverting the colors to make it stand out*/
-    padding: 5px 15px; 
-    border-radius: 5px; /*Creates rounded cornerds*/
+a:hover {
+    color: #14406D;
 }
 
-/*Section 1: Hero*/
-
-.hero_section{
+/* ==========================
+   NAVIGATION
+========================== */
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 50px; /*Lines up bio with above*/
-    margin: 50px 0; /*Creates space between nav bar and hero sectiom */
-    margin-bottom: 100px;
-    gap: 40px; /* Created a gap between pictture and description */
-}
-
-.hero_section .text{
-    flex: 5; /* text will take up 5/7 space on the screen*/
-}
-
-.hero_section .text h2{
-    font-size: 45px;
-}
-
-.hero_section .text .links{
-    margin-top: 25px; /*Separates links from description above*/
-}
-
-.hero_section .text .links a{
-    display: inline-block; /* This is keeping the icons and their descriptions together regardless of screen size */
-    padding: 5px 10px;
-    border: 2px solid var(--link-color); /*Creates a thing border around link*/
-    border-radius: 5px; /*Makes border rounded*/
-    margin-right: 10px;
-    margin-bottom: 10px;
-    transition: .1s;
-}
-
-.hero_section .text .links a:hover{ /*When links are hovererd over, color is inverted*/
-    color: var(--text-color);
-    border: 2px solid var(--text-color);
-}
-
-.hero_section .headshot{
-    flex: 2; /*Headshot will takeup 2/7 of screen*/
-    display: flex;
-    justify-content: right; /*Keeps image aligned with links above*/
-}
-
-.hero_section .headshot img{
-    width: 350px;
-    border-radius: 25%; /*Makes image rounded */
-}
-
-/*SECTION 2: SKILLS*/
-
-.skills_section{
     padding: 0 50px;
-    margin-bottom: 100px;
+    height: 80px;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.skills_section h2{
-    text-align: center;
-    font-size: 35px;
+nav .left a {
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: 600;
 }
 
-.skills_section .text{
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.skills_section .cells{
+/* NAVIGATION - Top Right Links Horizontal */
+nav .right {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* When screen width gets smaller they wrap around*/
-}
-
-.skills_section .cells .cell{
-    display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 10px;
-
-    width: 200px;
-    padding: 10px 20px;
-    margin: 10px;
-    border: 1.5px solid lightgrey;
-    border-radius: 5px;;
+    gap: 15px; /* spacing between links */
 }
 
-.skills_section .cells .cell img{
-    width: 30px;
-    height: 30px;
-    object-fit: contain;
-    border-radius: 2px;
-}
-
-.skills_section .cells .cell span{
-    font-size: 18px;
-}
-
-/*SECTION 3: PROJECTS*/
-.project_section{
-    padding: 0 50px;
-    margin-bottom: 100px;
-    text-align: center;
-}
-
-.project_section h2{
-    font-size: 35px;
-}
-
-/* PROJECTS: Individual Project Styling */
-.project_section .project {
-    margin: 50px auto;          /* space between projects */
-    padding: 20px;              /* inner spacing */
-    max-width: 800px;           /* prevents content from stretching too wide */
-    border: 1px solid #d3d3d3; /* subtle border for separation */
-    border-radius: 10px;        /* rounded corners */
-    background-color: #ffffff;  /* white background for contrast */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* soft shadow */
-    text-align: left;           /* left-align text for readability */
-}
-
-.project_section .project h3 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    color: var(--text-color);
-}
-
-.project_section .project p {
-    margin-bottom: 10px;
-    line-height: 1.6;           /* improves readability */
-}
-
-.project_section .project ul {
-    margin: 10px 0 10px 20px;  /* left indent for bullets */
-}
-
-.project_section .project ul li {
-    margin-bottom: 5px;        /* space between bullet points */
-}
-
-.project_section .project a {
-    color: var(--link-color);
+nav .right a {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* space between icon and text */
     font-weight: 500;
-    text-decoration: underline;
-    transition: 0.2s;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 16px; /* adjust sizing if needed */
 }
 
-.project_section .project a:hover {
-    color: var(--text-color);
+nav .right a:hover {
+    color: var(--accent-color);
+}
+
+nav .right a:last-child {
+    color: #ffffff;
+    background-color: var(--accent-color);
+    padding: 7px 16px;
+    border-radius: 5px;
     text-decoration: none;
 }
 
-/*Section 4: Contact*/
+nav .right a:last-child:hover {
+    background-color: #14406D;
+    color: #fff;
 
-.contact_section{
+}
+
+/* ==========================
+   HERO SECTION
+========================== */
+.hero_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 50px 100px 50px;
+    gap: 40px;
+}
+
+.hero_section .text {
+    flex: 5;
+}
+
+.hero_section .text h2 {
+    font-size: 46px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero_section .text p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero_section .text .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.hero_section .text .links a:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    border-color: var(--accent-color);
+}
+
+.hero_section .headshot {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero_section .headshot img {
+    width: 340px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* ==========================
+   SKILLS SECTION
+========================== */
+.skills_section {
     padding: 0 50px;
     margin-bottom: 100px;
 }
 
-.contact_section h2{
-    font-size: 35px;
+.skills_section h2 {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 30px;
 }
 
-.contact_section .group{
+.skills_section .text {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 17px;
+}
+
+.skills_section .cells {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skills_section .cells .cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 180px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skills_section .cells .cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.skills_section .cells .cell img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.skills_section .cells .cell span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* ==========================
+   PROJECTS SECTION
+========================== */
+.project_section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+
+.project_section h2 {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.project_section .project {
+    background-color: var(--card-background);
+    padding: 22px;
+    margin: 35px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project_section .project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.project_section .project h3 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.project_section .project p {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.project_section .project ul {
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+.project_section .project ul li {
+    margin-bottom: 6px;
+}
+
+.project_section .project a {
+    color: var(--accent-color);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.project_section .project a:hover {
+    color: #14406D;
+    text-decoration: none;
+}
+
+/* ==========================
+   CONTACT SECTION
+========================== */
+.contact_section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+
+.contact_section h2 {
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact_section .group {
     display: flex;
     gap: 50px;
+    flex-wrap: wrap;
 }
 
-.contact_section .group .text{
-    flex: 3;
-    margin-top: 20px;
+.contact_section .group .text {
+    flex: 1;
+    font-size: 17px;
+    line-height: 1.6;
 }
 
-.contact_section .group form{
-    flex: 3;
+.contact_section .group form {
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.contact_section .group form input textarea{
-    font-family: 'Roboto Flex', sans-serif;
-    border: 2px solid var(--link-color);
-    background-color: transparent;
-    padding: 10px;
-    margin-bottom: 15px;
+.contact_section .group form input,
+.contact_section .group form textarea {
+    font-family: var(--font-family);
+    border: 1.8px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 16px;
     outline: none;
     resize: none;
-}
-
-.contact_section .group form button{
     font-size: 16px;
-    font-family: 'Roboto Flex', sans-serif;
-    color: white;
-    background-color: var(--link-color);
+    background-color: #fff;
+}
+
+.contact_section .group form button {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--accent-color);
     border: none;
-    height: 50px;
+    border-radius: 6px;
+    padding: 14px 0;
     cursor: pointer;
-    transition: .1s;
+    transition: background-color 0.2s;
 }
 
-.contact_section .group form button:hover{
-    filter: brightness(.9);
+.contact_section .group form button:hover {
+    background-color: #14406D;
 }
 
-@media(max-width: 850px){
-    /*SECTION 1: HERO*/
-    .hero_section .text h2{
-        font-size: 35px;
+/* ==========================
+   RESPONSIVE DESIGN
+========================== */
+@media(max-width: 850px) {
+    .hero_section .text h2 {
+        font-size: 38px;
     }
 }
 
-@media(max-width: 740px){
-    
-    /*SECTION 1: HERO*/
-    .hero_section{
+@media(max-width: 740px) {
+    .hero_section {
         flex-direction: column-reverse;
+        text-align: center;
+        gap: 30px;
+        padding: 60px 30px 80px 30px;
     }
 
-    .hero_section .headshot img{
-        width: 300px;
+    .hero_section .headshot img {
+        width: 280px;
     }
 
     .project_section .project {
-        padding: 15px;
-        max-width: 90%;
-    }
-
-    .project_section .project h3 {
-        font-size: 24px;
-    }
-
-    .project_section .project p,
-    .project_section .project ul {
-        font-size: 16px;
-    }
-
-    /*SECTION 4: CONTACT*/
-    .contact_section .group{
-        flex-direction: column;
+        max-width: 95%;
+        padding: 20px;
     }
 }
 
-@media(max-width: 600px){/*This is similar to an IF STATEMENT
-    The following (inside curly brackets) will only occur IF 
-    screen width is 600px or smaller AKA viewing on a phone*/
-   
-    /*NAV BAR*/
-    nav{
-        padding: 0 20px; /* Makes padding less on smaller screen*/
+@media(max-width: 600px) {
+    nav {
+        padding: 0 20px;
+        flex-direction: column;
+        height: auto;
+        gap: 10px;
     }
 
-    nav .right a{
-        font-size: 22px; /* Increases font size on smaller screen*/
-    }
-
-    nav .right a:last-child{ /*Changes email to same as other icons on smaller screens*/
-        color: var(--text-color);
-        background-color: transparent;
-        padding: 0;
-    }
-    nav .right a span{ /* Removes descriptions only leaving icons on smaller screens*/
+    nav .right a span {
         display: none;
     }
 
-    /*SECTION 1: HERO*/
-
-    .hero_section{
-        padding: 0 20px;
+    .skills_section .cells {
+        gap: 15px;
     }
 
-    .hero_section .text h2{
+    .skills_section .cells .cell {
+        width: 150px;
+        padding: 10px 14px;
+    }
+
+    .hero_section .text h2 {
         font-size: 30px;
     }
 
-    /*SECTION 2: SKILLS*/
-    .skills_section{
-        padding: 0 20px;
-    }
-
-    .skills_section .cells .cell span{
-        font-size: 16px;
+    .contact_section .group {
+        flex-direction: column;
     }
 }
